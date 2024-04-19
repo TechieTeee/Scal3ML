@@ -1,2 +1,2 @@
 # Scal3ML
-Toolbox for easily building web 3 ml projects
+Toolbox for easily building and scaling web 3 ml projects
