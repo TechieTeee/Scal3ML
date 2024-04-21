@@ -37,6 +37,9 @@ The Scal3ML platform is deployed on the following networks:
 ![Scal3ML_Deployment_Details](https://github.com/TechieTeee/Scal3ML/assets/100870737/90cc8930-bb72-48a9-8a43-1a29d6870988)
 
 
+![Scal3ML_Deployment_Details_2_Neon](https://github.com/TechieTeee/Scal3ML/assets/100870737/57c66217-40d9-4aee-8041-f4c0b711162f)
+
+
 ## Next Steps
 - Implement additional features such as model evaluation and testing tools.
 - Enhance user interface and user experience based on feedback.
