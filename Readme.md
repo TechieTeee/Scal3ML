@@ -1,3 +1,4 @@
+
 # Scal3ML
 
 ## Background
@@ -32,6 +33,8 @@ The Scal3ML platform is deployed on the following networks:
 - Ethereum: Sepolia Testnet
 - Arbitrum: Arbitrum Stylus Testnet
 - Neon EVM: Neon EVM Testnet
+
+![Scal3ML_Deployment_Details](https://github.com/TechieTeee/Scal3ML/assets/100870737/90cc8930-bb72-48a9-8a43-1a29d6870988)
 
 
 ## Next Steps
