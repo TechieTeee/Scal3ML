@@ -158,10 +158,28 @@ footer {
 }
 
 .spacer {
-  opacity: 0;  /* Makes the text invisible */
+  opacity: 0;
 }
 
 .hero-title-main {
   font-weight: bold;
-  font-size: 3rem; /* Adjust the font size as needed */
+  font-size: 3rem;
 }
+
+.monetize-models-image {
+  width: 33%;
+  display: block;
+  margin: 0 auto;
+}
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+iframe {
+  width: 100%;
+}
+
