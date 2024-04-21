@@ -108,6 +108,7 @@ body {
   transition: background-color 0.3s ease;
   animation: fadeInUp 1s ease;
   margin-top: 1rem;
+  margin: 2rem;
 }
 
 .cta-button:hover {
@@ -154,4 +155,8 @@ footer {
   to {
     transform: scale(1.05);
   }
+}
+
+.spacer {
+  opacity: 0;  /* Makes the text invisible */
 }

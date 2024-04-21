@@ -101,16 +101,18 @@ export default function Home() {
           <button className="cta-button">Discover Use Cases</button>
         </section>
 
-        <section className="section">
-          <h2 className="section-title">Benefits</h2>
-          <ul className="benefits-list">
-            <li>Scalability</li>
-            <li>Decentralization</li>
-            <li>Transparency</li>
-            <li>Monetization opportunities</li>
-          </ul>
-          <button className="cta-button">Try It Out!</button>
-        </section>
+<section class="section">
+  <h2 class="section-title">Benefits</h2>
+  <ul class="benefits-list">
+    <li>Scalability</li>
+    <li>Decentralization</li>
+    <li>Transparency</li>
+    <li>Monetization opportunities</li>
+    <li class="spacer"> x </li>
+  </ul>
+  <a href="scal3ml-frontend/pages/scal3ml_main.js" class="cta-button">Try It Out!</a>
+</section>
+
       </main>
 
       <footer>
