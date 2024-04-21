@@ -109,7 +109,7 @@ export default function Home() {
             <li>Transparency</li>
             <li>Monetization opportunities</li>
           </ul>
-          <button className="cta-button">Explore Benefits</button>
+          <button className="cta-button">Try It Out!</button>
         </section>
       </main>
 
