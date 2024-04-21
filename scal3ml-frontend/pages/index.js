@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -110,7 +111,9 @@ export default function Home() {
     <li>Monetization opportunities</li>
     <li class="spacer"> x </li>
   </ul>
-  <a href="scal3ml-frontend/pages/scal3ml_main.js" class="cta-button">Try It Out!</a>
+  <Link href="/Scal3mlMain" passHref>
+      <button className="cta-button">Try It Out!</button>
+    </Link>
 </section>
 
       </main>
