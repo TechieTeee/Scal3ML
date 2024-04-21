@@ -67,6 +67,11 @@ export default function Home() {
         </section>
 
         <section className="section">
+          <img
+            src="/Doctor_Child_Photo.jpg"
+            alt="Doctor and Child"
+            className="section-image"
+          />
           <h2 className="section-title">Use Cases</h2>
           <p className="section-description">
             Scal3ML is a versatile solution with applications across diverse
