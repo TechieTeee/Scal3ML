@@ -1,33 +1,107 @@
+/* public/styles/global.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Define custom colors */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-color: #0070f3;
+  --secondary-color: #0056b3;
+  --background-color: #000000;  /* Set background color to black */
+  --text-color: #ffffff;        /* Set text color to white */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* Body styles */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Hero section styles */
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+  border-radius: 10px;
+}
+
+.banner {
+  background-color: var(--primary-color);
+  padding: 1rem 0;
+  margin-top: 2rem;
+  border-radius: 10px;
+  animation: slideIn 1s forwards;
+}
+
+.banner-text {  /* We can keep white text for the banner */
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section styles */
+.section {
+  margin: 3rem 0;
+  max-width: 800px;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--text-color); /* Make section title white */
+}
+
+.section-description {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-color); /* Make section description white */
+}
+
+/* Button styles */
+.cta-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Footer styles */
+footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+  margin: 0;
+  color: var(--text-color); /* Make footer text white */
 }
