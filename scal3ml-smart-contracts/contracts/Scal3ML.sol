@@ -2,67 +2,74 @@
 pragma solidity ^0.8.24;
 
 contract Scal3ML {
-    // Struct to represent a machine learning model
+    struct Data {
+        string ipfsHash;
+        address payable owner;
+        uint256 price;
+        mapping(address => bool) hasAccess;
+        mapping(address => uint256) contributors;
+    }
+    
     struct Model {
-        address owner; // Owner of the model
-        string metadata; // Metadata about the model (e.g., description, hyperparameters)
-        bytes modelData; // Actual model data (can be stored off-chain)
-        uint256 price; // Price in wei if the model is for sale, 0 if not for sale
-        address[] contributors; // Addresses of contributors who worked on the model
-        mapping(address => uint256) contributions; // Contributions of each contributor
+        string ipfsHash;
+        address payable owner;
+        uint256 price;
+        mapping(address => bool) hasAccess;
+        mapping(address => uint256) contributors;
     }
     
-    // Mapping from model ID to model details
-    mapping(uint256 => Model) public models;
-    uint256 public modelCount; // Counter for total models
+    mapping(uint256 => Data) public dataStore;
+    uint256 public dataCount;
     
-    // Event for model creation
-    event ModelCreated(uint256 indexed id, address indexed owner, string metadata, uint256 price);
+    mapping(uint256 => Model) public modelStore;
+    uint256 public modelCount;
     
-    // Event for model sale
-    event ModelForSale(uint256 indexed id, uint256 price);
+    event DataUploaded(uint256 indexed id, string ipfsHash, address indexed owner, uint256 price);
+    event ModelUploaded(uint256 indexed id, string ipfsHash, address indexed owner, uint256 price);
+    event DataPurchased(uint256 indexed id, address indexed buyer, uint256 amountPaid);
+    event ModelPurchased(uint256 indexed id, address indexed buyer, uint256 amountPaid);
+    event DataAccessGranted(uint256 indexed id, address indexed user);
+    event ModelAccessGranted(uint256 indexed id, address indexed user);
     
-    // Modifier to check if the caller is the owner of the model
-    modifier onlyOwner(uint256 _modelId) {
-        require(msg.sender == models[_modelId].owner, "Only the owner can perform this action");
-        _;
+    function uploadData(string memory _ipfsHash, uint256 _price) public {
+        dataCount++;
+        Data storage newData = dataStore[dataCount];
+        newData.ipfsHash = _ipfsHash;
+        newData.owner = payable(msg.sender);
+        newData.price = _price;
+        emit DataUploaded(dataCount, _ipfsHash, msg.sender, _price);
     }
-    
-    // Function to create a new model
-    function createModel(string memory _metadata, bytes memory _modelData) external {
-        models[modelCount] = Model({
-            owner: msg.sender,
-            metadata: _metadata,
-            modelData: _modelData,
-            price: 0,
-            contributors: new address 
-        });
-        emit ModelCreated(modelCount, msg.sender, _metadata, 0);
+
+    function uploadModel(string memory _ipfsHash, uint256 _price) public {
         modelCount++;
+        Model storage newModel = modelStore[modelCount];
+        newModel.ipfsHash = _ipfsHash;
+        newModel.owner = payable(msg.sender);
+        newModel.price = _price;
+        emit ModelUploaded(modelCount, _ipfsHash, msg.sender, _price);
     }
     
-    // Function to set a model for sale
-    function setModelForSale(uint256 _modelId, uint256 _price) external onlyOwner(_modelId) {
-        models[_modelId].price = _price;
-        emit ModelForSale(_modelId, _price);
+    function purchaseData(uint256 _id) public payable {
+        require(msg.value >= dataStore[_id].price, "Insufficient funds");
+        dataStore[_id].owner.transfer(msg.value);
+        emit DataPurchased(_id, msg.sender, msg.value);
     }
     
-    // Function to buy a model
-    function buyModel(uint256 _modelId) external payable {
-        require(models[_modelId].price > 0, "Model is not for sale");
-        require(msg.value >= models[_modelId].price, "Insufficient funds");
-        
-        address payable owner = payable(models[_modelId].owner);
-        owner.transfer(msg.value); // Transfer funds to model owner
-        
-        // Transfer ownership of the model
-        models[_modelId].owner = msg.sender;
-        models[_modelId].price = 0; // Reset price
+    function purchaseModel(uint256 _id) public payable {
+        require(msg.value >= modelStore[_id].price, "Insufficient funds");
+        modelStore[_id].owner.transfer(msg.value);
+        emit ModelPurchased(_id, msg.sender, msg.value);
     }
     
-    // Function to add a contributor to a model
-    function addContributor(uint256 _modelId, address _contributor, uint256 _contribution) external onlyOwner(_modelId) {
-        models[_modelId].contributors.push(_contributor);
-        models[_modelId].contributions[_contributor] = _contribution;
+    function grantDataAccess(uint256 _id, address _user) public {
+        require(msg.sender == dataStore[_id].owner, "Only owner can grant access");
+        dataStore[_id].hasAccess[_user] = true;
+        emit DataAccessGranted(_id, _user);
+    }
+    
+    function grantModelAccess(uint256 _id, address _user) public {
+        require(msg.sender == modelStore[_id].owner, "Only owner can grant access");
+        modelStore[_id].hasAccess[_user] = true;
+        emit ModelAccessGranted(_id, _user);
     }
 }
