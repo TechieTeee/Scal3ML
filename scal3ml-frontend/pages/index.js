@@ -7,14 +7,16 @@ export default function Home() {
         <title>Scal3ML - Scalable Machine Learning on Blockchain</title>
         <meta name="description" content="Scal3ML - Scalable Machine Learning on Blockchain" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/styles/global.css" />
       </Head>
 
       <header className="hero">
-        <h1 className="title">Scal3ML</h1>
-        <p className="description">Scalable Machine Learning on Blockchain</p>
+        <img src="/Scal3ML_Logo.png" alt="Scal3ML Logo" className="hero-logo" />
         <img src="/pexels-jopwell-2422282.jpg" alt="Scal3ML" className="hero-image" />
-        <div className="banner">
-          <p className="banner-text">Revolutionizing the intersection of machine learning and blockchain</p>
+        <div className="banner-container">
+          <div className="banner">
+            <p className="banner-text">Revolutionizing the intersection of machine learning and blockchain</p>
+          </div>
         </div>
       </header>
 

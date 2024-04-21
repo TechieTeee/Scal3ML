@@ -4,32 +4,59 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One:wght@300;400;500;600;700;800&display=swap');
+
 /* Define custom colors */
 :root {
   --primary-color: #0070f3;
   --secondary-color: #0056b3;
-  --background-color: #000000;  /* Set background color to black */
-  --text-color: #ffffff;        /* Set text color to white */
+  --background-color: #000000;
+  --text-color: #ffffff;
 }
 
 /* Body styles */
 body {
   color: var(--text-color);
   background-color: var(--background-color);
+  font-family: 'Rubik Mono One', monospace;
 }
 
 /* Hero section styles */
 .hero {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 4rem 0;
   position: relative;
 }
 
 .hero-image {
   width: 100%;
-  max-width: 600px;
-  margin-top: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  display: block;
   border-radius: 10px;
+}
+
+/* Text above hero image */
+.hero-text {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease;
+}
+
+/* Logo styles */
+.hero-logo {
+  width: 300px;
+  margin-bottom: 0px;
+  animation: fadeInUp 1s ease;
+}
+
+/* Banner styles */
+.banner-container {
+  text-align: center;
 }
 
 .banner {
@@ -38,12 +65,78 @@ body {
   margin-top: 2rem;
   border-radius: 10px;
   animation: slideIn 1s forwards;
+  text-align: center;
 }
 
-.banner-text {  /* We can keep white text for the banner */
+.banner-text {
   color: #fff;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+/* Section styles */
+.section {
+  margin: 3rem auto;
+  max-width: 800px;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  font-weight: bold;
+  animation: fadeInUp 1s ease;
+}
+
+.section-description {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  animation: fadeInUp 1s ease;
+}
+
+/* Button styles */
+.cta-button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: fadeInUp 1s ease;
+  margin-top: 1rem;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  /* Pulse animation: */
+  animation: pulse 0.7s ease-in-out infinite alternate;
+}
+
+/* Footer styles */
+footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideIn {
@@ -57,51 +150,8 @@ body {
   }
 }
 
-/* Section styles */
-.section {
-  margin: 3rem 0;
-  max-width: 800px;
-}
-
-.section-title {
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
-  color: var(--text-color); /* Make section title white */
-}
-
-.section-description {
-  font-size: 1.25rem;
-  line-height: 1.5;
-  color: var(--text-color); /* Make section description white */
-}
-
-/* Button styles */
-.cta-button {
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: var(--secondary-color);
-}
-
-/* Footer styles */
-footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-footer p {
-  margin: 0;
-  color: var(--text-color); /* Make footer text white */
+@keyframes pulse {
+  to {
+    transform: scale(1.05);
+  }
 }
