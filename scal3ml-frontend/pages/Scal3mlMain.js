@@ -20,6 +20,7 @@ export default function Scal3MLMain() {
   return (
     <div className="container">
       <Head>
+      <img src="/Scal3ML_Logo.png" alt="Scal3ML Logo" className="hero-logo-2" />
         <title>Scal3ML - Collaborate and Build</title>
         <meta name="description" content="Scal3ML - Collaborate and Build" />
         <link rel="icon" href="/favicon.ico" />
@@ -34,6 +35,24 @@ export default function Scal3MLMain() {
           .image-grid img {
             width: 100%;
             height: auto;
+          }
+          
+          .section {
+            margin-bottom: 40px;
+          }
+
+          .share-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          .share-button:hover {
+            background-color: #45a049;
           }
         `}</style>
       </Head>
@@ -86,6 +105,10 @@ export default function Scal3MLMain() {
             height="500px"
           ></iframe>
         </div>
+
+        <section className="section">
+          <button className="share-button">Share to IPFS</button>
+        </section>
       </main>
 
       <footer>
