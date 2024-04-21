@@ -1,4 +1,4 @@
-
+![Scal3ML_Logo](https://github.com/TechieTeee/Scal3ML/assets/100870737/a7e77318-f8fb-45dd-a47b-6cd0348e63ac)
 # Scal3ML
 
 ## Background
